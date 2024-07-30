@@ -1,14 +1,19 @@
 NAME = libft.a
-GCC = cc
+
+CC = cc
+
 SOURCE = srcs/
+
 CFLAGS = -Wall -Wextra -Werror 
+
 SRCS = ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
+
 OBJS = ${addprefix ${SOURCE},${SRCS:.c=.o}}
+
 HEADER = includes
 
-
 .c.o :
-	${GCC} ${CFLAGS} -I ${HEADER} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I ${HEADER} -c $< -o ${<:.c=.o}
 
 ${NAME} : ${OBJS}
 	ar -rc ${NAME} ${OBJS}
@@ -23,4 +28,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all fclean clean re
+.PHONY : clean
